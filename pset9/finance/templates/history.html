@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block main %}
+
+<h2>{{ username }}'s Transaction History</h2>
+
+<div class="container">
+    <div class="section">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Stock Symbol</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in transactions_rows %}
+                <tr>
+                    <td>{{ row['symbol'] }} </td>
+                    <td>{{ row['type'] }}</td>
+                    <td>{{ usd(row['price']) }}</td>
+                    <td>{{ row['quantity'] }}</td>
+                    <td>{{ row['time'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

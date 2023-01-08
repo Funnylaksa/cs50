@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Portfolio
+{% endblock %}
+
+{% block main %}
+
+<h2>{{ username }}'s Portfolio</h2>
+
+<div class="container">
+    <div class="section">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in portfolio_rows %}
+                <tr>
+                    <td>{{ row['symbol'] }} </td>
+                    <td>{{ row['name'] }} </td>
+                    <td>{{ row['quantity'] }} </td>
+                    <td>{{ row['price'] }} </td>
+                    <td>{{ row['total'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

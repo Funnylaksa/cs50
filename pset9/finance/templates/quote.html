@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Quote
+{% endblock %}
+
+{% block main %}
+
+{% if error_msg %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ error_msg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+
+<form action="/quote" method="post">
+
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol"
+            placeholder="Stock Symbol" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Quote</button>
+</form>
+<br>
+
+{% if quote %}
+<div class="container">
+    <div class="section">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock Symbol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td>{{ quote.name }}</td>
+                <td>{{ usd(quote.price) }}</td>
+                <td>{{ quote.symbol }}</td>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- name: {{ quote.name }}
+<br>
+price: {{ quote.price }}
+<br>
+symbol: {{ quote.symbol }} -->
+{% endif %}
+
+
+
+{% endblock %}
